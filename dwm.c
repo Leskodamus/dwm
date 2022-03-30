@@ -247,6 +247,7 @@ static void setcfact(const Arg *arg);
 static void setmfact(const Arg *arg);
 static void setup(void);
 static void seturgent(Client *c, int urg);
+static void shiftview(const Arg *arg);
 static void showhide(Client *c);
 static void sigchld(int unused);
 static void spawn(const Arg *arg);
@@ -1542,7 +1543,6 @@ resizeclient(Client *c, int x, int y, int w, int h)
 		c->w = wc.width += c->bw * 2;
 		c->h = wc.height += c->bw * 2;
 		wc.border_width = 0;
-		/* resetlayout(NULL); */
 	}
 	XConfigureWindow(dpy, c->win, CWX|CWY|CWWidth|CWHeight|CWBorderWidth, &wc);
 	configure(c);
@@ -2784,6 +2784,26 @@ zoom(const Arg *arg)
 		if (!c || !(c = nexttiled(c->next)))
 			return;
 	pop(c);
+}
+
+/** Function to shift the current view to the left/right
+ *
+ * @param: "arg->i" stores the number of tags to shift right (positive value)
+ *          or left (negative value)
+ */
+void
+shiftview(const Arg *arg) {
+	Arg shifted;
+
+	if(arg->i > 0) // left circular shift
+		shifted.ui = (selmon->tagset[selmon->seltags] << arg->i)
+		   | (selmon->tagset[selmon->seltags] >> (LENGTH(tags) - arg->i));
+
+	else // right circular shift
+		shifted.ui = selmon->tagset[selmon->seltags] >> (- arg->i)
+		   | selmon->tagset[selmon->seltags] << (LENGTH(tags) + arg->i);
+
+	view(&shifted);
 }
 
 int
