@@ -5,6 +5,7 @@ The [suckless dwm (dynamic window manager)](https://dwm.suckless.org/).
 ## Patches applied
 
 + actualfullscreen
++ alwayscenter
 + autostart
 + cfacts \+ vanitygaps
 + hide vacant tags
