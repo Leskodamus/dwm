@@ -8,6 +8,7 @@ The [suckless dwm (dynamic window manager)](https://dwm.suckless.org/).
 + alwayscenter
 + autostart
 + cfacts \+ vanitygaps
++ fixedborders
 + hide vacant tags
 + noborderfloatingfix
 + pertag
