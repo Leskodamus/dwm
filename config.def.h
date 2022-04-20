@@ -125,7 +125,7 @@ static Key keys[] = {
 	{ ControlMask,				XK_Print,  	spawn,	   	SHCMD("sleep 0.2; scrot -q 100 -s -f -l style=solid,width=2,color=green ~/screenshots/%b%d::%H%M%S.png && notify-send 'Screenshot saved' && sxiv -t ~/screenshots/") },
 	{ ShiftMask,				XK_Print,  	spawn,	   	SHCMD("scrot -q 100 /tmp/ss_%b%d::%H%M%S.png -e 'xclip -selection clipboard -t image/png -i $f' && notify-send 'Screenshot copied to clipboard'") },
 	{ ShiftMask|ControlMask,	XK_Print,  	spawn,	   	SHCMD("scrot -q 100 ~/screenshots/%b%d::%H%M%S.png && notify-send 'Screenshot saved' && sxiv -t ~/screenshots") },
-	{ MODKEY,					XK_t,	   	spawn,	   	SHCMD("~/cloud/Linux/scripts/todo") },
+	{ MODKEY,					XK_t,	   	spawn,	   	SHCMD("~/cloud/Linux/scripts/ntodo") },
 
 	{ MODKEY,						XK_numbersign,  togglescratch,	{.v = scratchpadcmd } },
 	{ MODKEY,						XK_d,      	spawn,         {.v = dmenucmd } },
