@@ -127,6 +127,10 @@ static Key keys[] = {
 	{ ShiftMask|ControlMask,	XK_Print,  	spawn,	   	SHCMD("scrot -q 100 ~/screenshots/%b%d::%H%M%S.png && notify-send 'Screenshot saved' && sxiv -t ~/screenshots") },
 	{ MODKEY,					XK_t,	   	spawn,	   	SHCMD("~/cloud/Linux/scripts/ntodo") },
 
+    { MODKEY|ControlMask,           XK_period,   spawn,      SHCMD("dunstctl history-pop") },
+    { MODKEY|ControlMask,           XK_space,    spawn,      SHCMD("dunstctl close") },
+    { MODKEY|Mod1Mask|ControlMask,  XK_space,    spawn,      SHCMD("dunstctl close-all") },
+
 	{ MODKEY,						XK_numbersign,  togglescratch,	{.v = scratchpadcmd } },
 	{ MODKEY,						XK_d,      	spawn,         {.v = dmenucmd } },
 	{ MODKEY,						XK_Return, 	spawn,         {.v = termcmd } },
