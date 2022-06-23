@@ -120,10 +120,11 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask, 		XK_e, 		spawn, 		SHCMD("~/cloud/Linux/scripts/pdmenu") },
 	{ MODKEY|ControlMask,		XK_l,	   	spawn,	   	SHCMD("slock") },
 	{ MODKEY,					XK_e,	   	spawn,	   	SHCMD("st -e nnn -e") },
-	{ 0,						XK_Print,  	spawn,	   	SHCMD("sleep 0.2; scrot -q 100 -s -f -l style=solid,width=2,color=green /tmp/ss_%b%d::%H%M%S.png -e 'xclip -selection clipboard -t image/png $f' && notify-send 'Screenshot copied to clipboard'") },
-	{ ControlMask,				XK_Print,  	spawn,	   	SHCMD("sleep 0.2; scrot -q 100 -s -f -l style=solid,width=2,color=green ~/screenshots/%b%d::%H%M%S.png && notify-send 'Screenshot saved' && sxiv -t ~/screenshots/") },
-	{ ShiftMask,				XK_Print,  	spawn,	   	SHCMD("scrot -q 100 /tmp/ss_%b%d::%H%M%S.png -e 'xclip -selection clipboard -t image/png -i $f' && notify-send 'Screenshot copied to clipboard'") },
-	{ ShiftMask|ControlMask,	XK_Print,  	spawn,	   	SHCMD("scrot -q 100 ~/screenshots/%b%d::%H%M%S.png && notify-send 'Screenshot saved' && sxiv -t ~/screenshots") },
+	/* { 0,						XK_Print,  	spawn,	   	SHCMD("sleep 0.2; scrot -q 100 -s -f -l style=solid,width=2,color=green /tmp/ss_%b%d::%H%M%S.png -e 'xclip -selection clipboard -t image/png $f' && notify-send 'Screenshot copied to clipboard'") }, */
+	/* { ControlMask,				XK_Print,  	spawn,	   	SHCMD("sleep 0.2; scrot -q 100 -s -f -l style=solid,width=2,color=green ~/screenshots/%b%d::%H%M%S.png && notify-send 'Screenshot saved' && sxiv -t ~/screenshots/") }, */
+	/* { ShiftMask,				XK_Print,  	spawn,	   	SHCMD("scrot -q 100 /tmp/ss_%b%d::%H%M%S.png -e 'xclip -selection clipboard -t image/png -i $f' && notify-send 'Screenshot copied to clipboard'") }, */
+	/* { ShiftMask|ControlMask,	XK_Print,  	spawn,	   	SHCMD("scrot -q 100 ~/screenshots/%b%d::%H%M%S.png && notify-send 'Screenshot saved' && sxiv -t ~/screenshots") }, */
+	{ 0,	                    XK_Print,  	spawn,	   	SHCMD("flameshot gui") },
 	{ MODKEY,					XK_t,	   	spawn,	   	SHCMD("~/cloud/Linux/scripts/ntodo") },
 
     { MODKEY|ControlMask,           XK_period,   spawn,      SHCMD("dunstctl history-pop") },
