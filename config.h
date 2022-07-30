@@ -101,6 +101,7 @@ static Key keys[] = {
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|ShiftMask,                push)
 
+    /* tag keys  */
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -111,22 +112,26 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 
+    /* xf keys (for laptop)  */
 	{ 0,	XF86XK_AudioRaiseVolume,   spawn,  SHCMD("/usr/bin/pamixer -i 5 -u; pkill -RTMIN+1 dwmblocks") },
 	{ 0,	XF86XK_AudioLowerVolume,   spawn,  SHCMD("/usr/bin/pamixer -d 5 -u; pkill -RTMIN+1 dwmblocks") },
 	{ 0,	XF86XK_AudioMute,          spawn,  SHCMD("/usr/bin/pamixer -t; pkill -RTMIN+1 dwmblocks") },
 	{ 0,	XF86XK_MonBrightnessUp,    spawn,  SHCMD("/usr/bin/xbacklight -inc 2; pkill -RTMIN+2 dwmblocks") },
 	{ 0,	XF86XK_MonBrightnessDown,  spawn,  SHCMD("/usr/bin/xbacklight -dec 2; pkill -RTMIN+2 dwmblocks") },
 
-	{ MODKEY|ShiftMask, 		XK_e, 		spawn, 		SHCMD("pdmenu") },
+    /* shortcuts for applications/scripts  */
+	{ MODKEY|ShiftMask, 		XK_e, 		spawn, 		SHCMD("~/.local/bin/pdmenu") },
 	{ MODKEY|ControlMask,		XK_l,	   	spawn,	   	SHCMD("slock") },
 	{ MODKEY,					XK_e,	   	spawn,	   	SHCMD("st -e nnn -e") },
 	{ 0,	                    XK_Print,  	spawn,	   	SHCMD("flameshot gui") },
-	{ MODKEY,					XK_t,	   	spawn,	   	SHCMD("ntodo") },
+	{ MODKEY,					XK_t,	   	spawn,	   	SHCMD("~/.local/bin/ntodo") },
 
+    /* dunst shortcuts */
     { MODKEY|ControlMask,           XK_period,   spawn,      SHCMD("dunstctl history-pop") },
     { MODKEY|ControlMask,           XK_space,    spawn,      SHCMD("dunstctl close") },
     { MODKEY|Mod1Mask|ControlMask,  XK_space,    spawn,      SHCMD("dunstctl close-all") },
 
+    /* more dwm shortcuts */
 	{ MODKEY,						XK_numbersign,  togglescratch,	{.v = scratchpadcmd } },
 	{ MODKEY,						XK_d,      	spawn,         {.v = dmenucmd } },
 	{ MODKEY,						XK_Return, 	spawn,         {.v = termcmd } },
@@ -142,7 +147,6 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,              XK_l,      incrgaps,       {.i = -10 } },
 	{ MODKEY|Mod1Mask,              XK_0,      togglegaps,     {0} },
 	{ MODKEY|Mod1Mask|ShiftMask,    XK_0,      defaultgaps,    {0} },
-
 	/* { MODKEY|Mod4Mask,              XK_i,      incrigaps,      {.i = +1 } }, */
 	/* { MODKEY|Mod4Mask|ShiftMask,    XK_i,      incrigaps,      {.i = -1 } }, */
 	/* { MODKEY|Mod4Mask,              XK_o,      incrogaps,      {.i = +1 } }, */
@@ -155,7 +159,6 @@ static Key keys[] = {
 	/* { MODKEY|Mod4Mask|ShiftMask,    XK_8,      incrohgaps,     {.i = -1 } }, */
 	/* { MODKEY|Mod4Mask,              XK_9,      incrovgaps,     {.i = +1 } }, */
 	/* { MODKEY|Mod4Mask|ShiftMask,    XK_9,      incrovgaps,     {.i = -1 } }, */
-
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_i,      shiftview,      { .i = +1 } },
