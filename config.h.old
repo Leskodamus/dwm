@@ -1,5 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
+/* Old config for laptop */
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 10;       /* snap pixel */
