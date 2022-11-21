@@ -78,46 +78,47 @@ static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
 static const Key keys[] = {
-	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_d,      spawn,          {.v = roficmd } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-    { MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-    { MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
-    { MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -0.25} },
-    { MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
-    { MODKEY,                       XK_r,      resetlayout,    {0} },
-	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
-	{ MODKEY|ControlMask,           XK_e,      quit,           {0} },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
+	/* modifier                     key        function         argument */
+	{ MODKEY,                       XK_d,      spawn,           {.v = roficmd } },
+	{ MODKEY,                       XK_Return, spawn,           {.v = termcmd } },
+    { MODKEY,                       XK_grave,  togglescratch,   {.v = scratchpadcmd } },
+	{ MODKEY,                       XK_b,      togglebar,       {0} },
+	{ MODKEY,                       XK_j,      focusstack,      {.i = +1 } },
+	{ MODKEY,                       XK_k,      focusstack,      {.i = -1 } },
+	{ MODKEY,                       XK_i,      incnmaster,      {.i = +1 } },
+	{ MODKEY,                       XK_p,      incnmaster,      {.i = -1 } },
+	{ MODKEY,                       XK_h,      setmfact,        {.f = -0.05} },
+	{ MODKEY,                       XK_l,      setmfact,        {.f = +0.05} },
+    { MODKEY|ShiftMask,             XK_h,      setcfact,        {.f = +0.25} },
+    { MODKEY|ShiftMask,             XK_l,      setcfact,        {.f = -0.25} },
+    { MODKEY|ShiftMask,             XK_o,      setcfact,        {.f =  0.00} },
+    { MODKEY,                       XK_r,      resetlayout,     {0} },
+	{ MODKEY|ShiftMask,             XK_Return, zoom,            {0} },
+	{ MODKEY,                       XK_Tab,    view,            {0} },
+	{ MODKEY|ShiftMask,             XK_t,      setlayout,       {.v = &layouts[0]} },
+	{ MODKEY|ShiftMask,             XK_f,      setlayout,       {.v = &layouts[1]} },
+	{ MODKEY|ShiftMask,             XK_m,      setlayout,       {.v = &layouts[2]} },
+	{ MODKEY,                       XK_space,  setlayout,       {0} },
+	{ MODKEY|ShiftMask,             XK_space,  togglefloating,  {0} },
+	{ MODKEY,                       XK_f,      togglefullscr,   {0} },
+	{ MODKEY,                       XK_0,      view,            {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_0,      tag,             {.ui = ~0 } },
+	{ MODKEY,                       XK_comma,  focusmon,        {.i = -1 } },
+	{ MODKEY,                       XK_period, focusmon,        {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_comma,  tagmon,          {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_period, tagmon,          {.i = +1 } },
+	{ MODKEY|ControlMask,           XK_p,      spawn,           SHCMD("rofipwm") },
+	{ MODKEY|ShiftMask,             XK_q,      killclient,      {0} },
+	{ MODKEY|ControlMask,           XK_r,      quit,            {0} },
+	TAGKEYS(                        XK_1,                       0)
+	TAGKEYS(                        XK_2,                       1)
+	TAGKEYS(                        XK_3,                       2)
+	TAGKEYS(                        XK_4,                       3)
+	TAGKEYS(                        XK_5,                       4)
+	TAGKEYS(                        XK_6,                       5)
+	TAGKEYS(                        XK_7,                       6)
+	TAGKEYS(                        XK_8,                       7)
+	TAGKEYS(                        XK_9,                       8)
 };
 
 /* Button definitions */
