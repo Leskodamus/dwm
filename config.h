@@ -24,7 +24,7 @@ static const char *colors[][3]           = {
 	[SchemeSel]  = { col_gray1, col_orange,  col_orange  },
 };
 static const Gap gaps                    = {
-    .isgap = 1, .realgap = 10, .gappx = 10
+    .isgap = 1, .realgap = 5, .gappx = 5
 };
 
 /* Tagging */
