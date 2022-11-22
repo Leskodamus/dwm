@@ -23,6 +23,9 @@ static const char *colors[][3]           = {
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray1, col_orange,  col_orange  },
 };
+static const Gap gaps                    = {
+    .isgap = 1, .realgap = 10, .gappx = 10
+};
 
 /* Tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -81,37 +84,41 @@ static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34
 
 static const Key keys[] = {
 	/* modifier                     key        function         argument */
-	{ MODKEY,                       XK_d,      spawn,           {.v = roficmd } },
-	{ MODKEY,                       XK_Return, spawn,           {.v = termcmd } },
+    { MODKEY,                       XK_d,      spawn,           {.v = roficmd } },
+    { MODKEY,                       XK_Return, spawn,           {.v = termcmd } },
     { MODKEY,                       XK_grave,  togglescratch,   {.v = scratchpadcmd } },
-	{ MODKEY,                       XK_b,      togglebar,       {0} },
-	{ MODKEY,                       XK_j,      focusstack,      {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,      {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,      {.i = +1 } },
-	{ MODKEY,                       XK_p,      incnmaster,      {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,        {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,        {.f = +0.05} },
+    { MODKEY,                       XK_b,      togglebar,       {0} },
+    { MODKEY,                       XK_j,      focusstack,      {.i = +1 } },
+    { MODKEY,                       XK_k,      focusstack,      {.i = -1 } },
+    { MODKEY,                       XK_i,      incnmaster,      {.i = +1 } },
+    { MODKEY,                       XK_p,      incnmaster,      {.i = -1 } },
+    { MODKEY,                       XK_minus,  setgaps,         {.i = -5 } },
+    { MODKEY,                       XK_equal,  setgaps,         {.i = +5 } },
+    { MODKEY|ShiftMask,             XK_minus,  setgaps,         {.i = GAP_RESET } },
+    { MODKEY|ShiftMask,             XK_equal,  setgaps,         {.i = GAP_TOGGLE} },
+    { MODKEY,                       XK_h,      setmfact,        {.f = -0.05} },
+    { MODKEY,                       XK_l,      setmfact,        {.f = +0.05} },
     { MODKEY|ShiftMask,             XK_h,      setcfact,        {.f = +0.25} },
     { MODKEY|ShiftMask,             XK_l,      setcfact,        {.f = -0.25} },
     { MODKEY|ShiftMask,             XK_o,      setcfact,        {.f =  0.00} },
     { MODKEY,                       XK_r,      resetlayout,     {0} },
-	{ MODKEY|ShiftMask,             XK_Return, zoom,            {0} },
-	{ MODKEY,                       XK_Tab,    view,            {0} },
-	{ MODKEY|ShiftMask,             XK_t,      setlayout,       {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,             XK_f,      setlayout,       {.v = &layouts[1]} },
-	{ MODKEY|ShiftMask,             XK_m,      setlayout,       {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  setlayout,       {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating,  {0} },
-	{ MODKEY,                       XK_f,      togglefullscr,   {0} },
-	{ MODKEY,                       XK_0,      view,            {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,             {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,        {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,        {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,          {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,          {.i = +1 } },
-	{ MODKEY|ControlMask,           XK_p,      spawn,           SHCMD("rofipwm") },
-	{ MODKEY|ShiftMask,             XK_q,      killclient,      {0} },
-	{ MODKEY|ControlMask,           XK_r,      quit,            {0} },
+    { MODKEY|ShiftMask,             XK_Return, zoom,            {0} },
+    { MODKEY,                       XK_Tab,    view,            {0} },
+    { MODKEY|ShiftMask,             XK_t,      setlayout,       {.v = &layouts[0]} },
+    { MODKEY|ShiftMask,             XK_f,      setlayout,       {.v = &layouts[1]} },
+    { MODKEY|ShiftMask,             XK_m,      setlayout,       {.v = &layouts[2]} },
+    { MODKEY,                       XK_space,  setlayout,       {0} },
+    { MODKEY|ShiftMask,             XK_space,  togglefloating,  {0} },
+    { MODKEY,                       XK_f,      togglefullscr,   {0} },
+    { MODKEY,                       XK_0,      view,            {.ui = ~0 } },
+    { MODKEY|ShiftMask,             XK_0,      tag,             {.ui = ~0 } },
+    { MODKEY,                       XK_comma,  focusmon,        {.i = -1 } },
+    { MODKEY,                       XK_period, focusmon,        {.i = +1 } },
+    { MODKEY|ShiftMask,             XK_comma,  tagmon,          {.i = -1 } },
+    { MODKEY|ShiftMask,             XK_period, tagmon,          {.i = +1 } },
+    { MODKEY|ControlMask,           XK_p,      spawn,           SHCMD("rofipwm") },
+    { MODKEY|ShiftMask,             XK_q,      killclient,      {0} },
+    { MODKEY|ControlMask,           XK_r,      quit,            {0} },
 	TAGKEYS(                        XK_1,                       0)
 	TAGKEYS(                        XK_2,                       1)
 	TAGKEYS(                        XK_3,                       2)
