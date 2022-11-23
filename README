@@ -55,6 +55,7 @@ Patches
 * cool-autostart: autostart applications defined in config.h and kill on exit
 * cfacts: resize windows vertically
 * fancybar: show titles of all visible windows
+* fullgaps: gaps around windows that can be resized
 * pertag: keep layout per tag
 * resetlayout: reset layout if only one client is visible
 * resizecorners: resize windwos with mouse from the nearest corner
